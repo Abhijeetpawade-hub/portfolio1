@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e43d45226b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <h2>PORTFOLIO</h2>
+                <ul id="sidemenu">
+                    <li><a href="#header">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#projects">PROJECTS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <h3>Hello!</h3>
+                <h1>I'm Abhijeet Pawade</h1>
+                <br>
+                <p>A Student Of Computer Science</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="/img.jpg">
+                </div>
+                <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>Hello, I'm Abhijeet Pawade a student of computer science pursuing bachelor's degree in computer applications currently in second year</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                   
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>C/C++</span><br>Completed c and c++ certificate course</li>
+                        <li><span>web development</span><br>knowledge of html,css & js</li>
+                        <li><span>python</span><br>basics of python</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>10th</span><br>Nutan Vidyalaya, Selu</li>
+                        <li><span>12th</span><br>Nutan Mahavidyalaya, Selu</li>
+                        <li><span>F.Y</span><br>Modern College Of ACS Ganeshkhind, Pune</li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------projects---------->
+
+    <div id="projects">
+        <div class="container">
+            <h1 class="sub-title">My Projects</h1>
+            <div class="projects-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Portfolio Website</h2>
+                    <p>Developed a responsive personal portfolio website using HTML,CSS and Javascript, showcasing skills and projects</p> 
+
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop-simple"></i>
+                    <h2>c++ project</h2>
+                    <p>Developed a C++ based security system featuring user registration, login, and password change functionalities. Implemented secure data handling practices for improved user authentication</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!----contact--------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>abhijeetpawade5@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>9561303014</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/abhijeet_pawade_?igsh=bG81eWFpZnBqZnhk"><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://github.com/Abhijeetpawade-hub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abhijeet-pawade-10a8902b9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="/RESUME.pdf" class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    
+</div>
+    
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classlist.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classlist.remove("active-tab");
+        }
+        event.currentTarget.classlist.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzJw3r2dk4Nkuzr4B4fTJgUcUBItPoKgK4xXj4fMOTxXtEDpQLTjFipp-0cJxd-DaBI/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML =""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+    
+
+</body>
+</html>
